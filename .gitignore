@@ -1,5 +1,8 @@
-data/input/*.txt
-data/output/*.txt
+*.txt
+*.png
+data/chat_raw/*.txt
+data/chat_parsed/*.txt
+data/word_cloud/*.png
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

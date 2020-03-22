@@ -1,1 +1,4 @@
+matplotlib
+stop_words
+wordcloud
 parse>= 1.15.0

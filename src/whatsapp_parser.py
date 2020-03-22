@@ -50,8 +50,8 @@ def run(chats_path: str, output_path: str):
 
 def main(argv):
     parser = argparse.ArgumentParser()
-    parser.add_argument('--chats_path', type=str, required=False, default="../data/input/")
-    parser.add_argument('--output_path', type=str, required=False, default="../data/output/")
+    parser.add_argument('--chats_path', type=str, required=False, default="../data/chat_raw/")
+    parser.add_argument('--output_path', type=str, required=False, default="../data/chat_parsed/")
     params, _ = parser.parse_known_args(argv)
     run(params.chats_path, params.output_path)
 
