@@ -1,10 +1,10 @@
-import re
 import sys
 import argparse
 import parse
 from typing import List, Dict, Tuple
-from os import listdir, path
-from collections import defaultdict
+from os import path
+
+from src.utils import get_txt_files
 
 
 def parse_line(line: str) -> Tuple[str, str]:
@@ -46,13 +46,6 @@ def run(chats_path: str, output_path: str):
     for file_name, file_path in zip(txt_files_name, txt_files_paths):
         actors_text = parse_chat(file_path)
         save_actors_text(actors_text, file_name, output_path)
-
-
-def get_txt_files(chats_path: str) -> Tuple[List[str], List[str]]:
-    files_name = listdir(path=chats_path)
-    txt_files_name = [file for file in files_name if file.endswith(".txt")]
-    txt_files_paths = [path.join(chats_path, file) for file in txt_files_name]
-    return txt_files_name, txt_files_paths
 
 
 def main(argv):
