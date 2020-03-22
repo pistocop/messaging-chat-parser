@@ -26,7 +26,7 @@ def parse_chat(file_path: str) -> Dict[str, List[str]]:
             actor, text = parse_line(line)
             actors_txt.setdefault(actor, []).append(text)
     invalid_lines = actors_txt.get('invalid', [])
-    print(f'Founded {len(invalid_lines)} invalid lines:\n{invalid_lines}\n')
+    print(f'Found {len(invalid_lines)} invalid lines:\n{invalid_lines}\n')
     actors_txt.pop('invalid', None)
     return actors_txt
 
