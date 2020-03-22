@@ -41,7 +41,7 @@ def save_actors_text(actors_text: Dict[str, List[str]], file_name: str, output_p
 
 def run(chats_path: str, output_path: str):
     txt_files_name, txt_files_paths = get_txt_files(chats_path)
-    print(f"Fund {len(txt_files_paths)} txt files in `{chats_path}` folder: {txt_files_paths}")
+    print(f"Found {len(txt_files_paths)} txt files in `{chats_path}` folder: {txt_files_paths}")
 
     for file_name, file_path in zip(txt_files_name, txt_files_paths):
         actors_text = parse_chat(file_path)
