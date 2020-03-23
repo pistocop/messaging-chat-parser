@@ -1,4 +1,7 @@
-# Whatsapp chat parser
+# Messaging parser
+Some utility build to extract text from my Whatsapp and Telegram account.
+
+##📞 Whatsapp chat parser
 Extract users text from whatsapp chats and save it as unique text file.
 
 - **Input (to provide):** _.txt_ file exported from one or more chat
@@ -13,3 +16,5 @@ Extract users text from whatsapp chats and save it as unique text file.
     5. Run `src/word_cloud.py`
         - Italian stopwords are used
     6. Check the images under `data/word_cloud/` 
+    
+## ✈ Telegram chat parser

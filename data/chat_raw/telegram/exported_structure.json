@@ -1,0 +1,59 @@
+{
+  "[profile_pictures]": {
+    "date": "leaf",
+    "photo": "leaf"
+  },
+  "about": "leaf",
+  "chats": {
+    "[list]": {
+      "[messages]": {
+        "[text]": {
+          "text": "leaf",
+          "type": "leaf"
+        },
+        "date": "leaf",
+        "edited": "leaf",
+        "from": "leaf",
+        "from_id": "leaf",
+        "id": "leaf",
+        "text": "leaf",
+        "type": "leaf"
+      },
+      "id": "leaf",
+      "messages": "leaf",
+      "type": "leaf"
+    },
+    "about": "leaf",
+    "list": "leaf"
+  },
+  "contacts": {
+    "[list]": {
+      "date": "leaf",
+      "first_name": "leaf",
+      "last_name": "leaf",
+      "phone_number": "leaf",
+      "user_id": "leaf"
+    },
+    "about": "leaf",
+    "list": "leaf"
+  },
+  "frequent_contacts": {
+    "[list]": {
+      "category": "leaf",
+      "id": "leaf",
+      "name": "leaf",
+      "rating": "leaf",
+      "type": "leaf"
+    },
+    "about": "leaf",
+    "list": "leaf"
+  },
+  "personal_information": {
+    "first_name": "leaf",
+    "last_name": "leaf",
+    "phone_number": "leaf",
+    "user_id": "leaf",
+    "username": "leaf"
+  },
+  "profile_pictures": "leaf"
+}

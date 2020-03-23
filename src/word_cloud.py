@@ -2,15 +2,15 @@ import argparse
 import sys
 import matplotlib.pyplot as plt
 from os import path
-from src.utils import get_txt_files
-from wordcloud import WordCloud, STOPWORDS
+from src.utils import get_dir_files
+from wordcloud import WordCloud
 from stop_words import get_stop_words
 
 custom_stop_words = ['media', 'omessi']
 
 
 def run(txt_input: str, img_output: str):
-    txt_files_name, txt_files_paths = get_txt_files(txt_input)
+    txt_files_name, txt_files_paths = get_dir_files(dir_path=txt_input, extension_filter='.txt')
     ita_stopwords = get_stop_words('it')
 
     for file_name, file_path in zip(txt_files_name, txt_files_paths):

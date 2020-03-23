@@ -4,7 +4,7 @@ import parse
 from typing import List, Dict, Tuple
 from os import path
 
-from src.utils import get_txt_files
+from src.utils import get_dir_files
 
 
 def parse_line(line: str) -> Tuple[str, str]:
@@ -40,7 +40,7 @@ def save_actors_text(actors_text: Dict[str, List[str]], file_name: str, output_p
 
 
 def run(chats_path: str, output_path: str):
-    txt_files_name, txt_files_paths = get_txt_files(chats_path)
+    txt_files_name, txt_files_paths = get_dir_files(chats_path)
     print(f"Found {len(txt_files_paths)} txt files in `{chats_path}` folder: {txt_files_paths}")
 
     for file_name, file_path in zip(txt_files_name, txt_files_paths):
@@ -50,9 +50,9 @@ def run(chats_path: str, output_path: str):
 
 def main(argv):
     parser = argparse.ArgumentParser()
-    parser.add_argument('--chats_path', type=str, required=False, default="../data/chat_raw/")
+    parser.add_argument('--chats_path', type=str, required=False, default="../data/chat_raw/whatsapp/")
     parser.add_argument('--output_path', type=str, required=False, default="../data/chat_parsed/")
-    params, _ = parser.parse_known_args(argv)
+    params = parser.parse_args(argv)
     run(params.chats_path, params.output_path)
 
 

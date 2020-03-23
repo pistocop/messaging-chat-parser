@@ -1,9 +1,3 @@
-*.txt
-*.png
-data/chat_raw/*.txt
-data/chat_parsed/*.txt
-data/word_cloud/*.png
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -139,3 +133,13 @@ dmypy.json
 .idea/modules.xml
 .idea/vcs.xml
 .idea/whatsapp-chat-parser.iml
+.idea/dictionaries/
+data/chat_raw/telegram/result.json
+
+data/chat_raw/whatsapp/*
+!data/chat_raw/whatsapp/.gitkeep
+data/chat_raw/telegram/*
+!data/chat_raw/telegram/.gitkeep
+!data/chat_raw/telegram/exported_structure.json
+data/chat_parsed/*.txt
+data/word_cloud/*.png
