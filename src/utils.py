@@ -1,5 +1,11 @@
+import json
 from os import listdir, path
 from typing import Tuple, List
+from argparse import Namespace
+
+
+def params_printer(params: Namespace):
+    print(f"Inputs provided: {json.dumps(vars(params), indent=4)}")
 
 
 def get_dir_files(dir_path: str, extension_filter: str = None) -> Tuple[List[str], List[str]]:

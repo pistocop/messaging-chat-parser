@@ -1,17 +1,40 @@
+import os
 import sys
 import json
 import argparse
+from tqdm import tqdm
 
-from src.utils import extract_dict_structure
+from src.utils import extract_dict_structure, params_printer
 
 
 def run(json_path: str, output_path: str, chat_id_list: str = None, personal_chat: bool = None):
+    print(f"Loading telegram user data at {json_path}")
     telegram_data = load_data(json_path)
-    usr_id = telegram_data['personal_information']['user_id']
 
-    for chat in telegram_data['chats']['list']:
+    print(f"Start extracting user messages")
+    user_messages = extract_user_messages(personal_chat, telegram_data)
+
+    print(f"Saving {len(user_messages)}^ user wrote telegram messages")
+    save_user_messages(output_path, user_messages)
+
+
+def save_user_messages(output_path, user_messages):
+    output_file = os.path.join(output_path, "user-telegram.txt")
+    with open(output_file, 'w') as f:
+        [f.write(f"{msg}\n") for msg in user_messages]
+
+
+def extract_user_messages(personal_chat, telegram_data):
+    usr_id = telegram_data['personal_information']['user_id']
+    usr_messages = []
+    for chat in tqdm(telegram_data['chats']['list']):
         if chat['type'] == 'saved_messages' and not personal_chat:
-            pass
+            continue  # Skip personal messages
+        print(f"Processing chat with `{chat.get('name', 'personal messages')}`")
+        for message in chat['messages']:
+            if message['type'] == "message" and message['from_id'] == usr_id and message['text']:
+                usr_messages.append(message['text'])
+    return usr_messages
 
 
 def load_data(json_path):

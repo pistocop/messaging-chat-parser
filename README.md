@@ -18,3 +18,10 @@ Extract users text from whatsapp chats and save it as unique text file.
     6. Check the images under `data/word_cloud/` 
     
 ## ✈ Telegram chat parser
+Extract all the messages wrote by the user (and only those).
+
+- **Usage**
+    1. Do the telegram dump - [how to](https://telegram.org/blog/export-and-more)
+    2. Move the `result.json` obtained under `/data/chat_raw/telegram/`
+    3. Run `telegram_parser.py
+    4. Check the result file `/data/chat_parsed/user-telegram.txt`
