@@ -1,9 +1,9 @@
 # Messaging parser
-Some utility build to extract text from my Whatsapp and Telegram account.
+🎯 Library used to extract messages wrote by myself on Whatsapp and Telegram.
 
 ## 📞 Whatsapp chat parser
 Extract users text from whatsapp chats and save it as unique text file.
- 
+
 - **Input (to provide):** _.txt_ file exported from one or more chat
 - **Output:**
     - One txt file for each user in the chat provided
