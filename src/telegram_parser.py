@@ -4,7 +4,7 @@ import json
 import argparse
 from tqdm import tqdm
 
-from src.utils import extract_dict_structure, params_printer
+from src.utils.utils import extract_dict_structure, params_printer
 
 
 def run(json_path: str, output_path: str, chat_id_list: str = None, personal_chat: bool = None):

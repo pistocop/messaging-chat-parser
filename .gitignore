@@ -127,19 +127,18 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-.idea/.gitignore
-.idea/inspectionProfiles/
-.idea/misc.xml
-.idea/modules.xml
-.idea/vcs.xml
-.idea/whatsapp-chat-parser.iml
-.idea/dictionaries/
-data/chat_raw/telegram/result.json
+.idea
 
 data/chat_raw/whatsapp/*
-!*/.gitkeep
+!data/chat_raw/whatsapp/.gitkeep
 data/chat_raw/telegram/*
+!data/chat_raw/telegram/.gitkeep
 !/data/chat_raw/telegram/exported_structure.json
+
+data/chat_parsed/*
+!data/chat_parsed/.gitkeep
+
+!*/.gitkeep
 data/chat_parsed/*.txt
 data/word_cloud/*.png
-.idea/messaging-chat-parser.iml
+tmp

@@ -2,7 +2,7 @@ import argparse
 import sys
 import matplotlib.pyplot as plt
 from os import path
-from src.utils import get_dir_files
+from src.utils.utils import get_dir_files
 from wordcloud import WordCloud
 from stop_words import get_stop_words
 
