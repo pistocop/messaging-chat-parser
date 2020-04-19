@@ -35,12 +35,7 @@ def parse_chat(file_path: str, user_name: str) -> List[str]:
             if actor == 'invalid':
                 invalid_lines.append(f"{actor} - {text}")
                 continue
-            skip = False
-            for stop_word in WA_STOP_WORDS:
-                if stop_word in text:
-                    invalid_lines.append(f"[STOP_WORD] {actor} - {text}")
-                    skip = True
-            if skip:
+            if stop_word_checker(actor, invalid_lines, text):
                 continue
             actor = USER_PLACEHOLDER if actor == user_name else OTHERS_PLACEHOLDER
             chat_text.append(f"{actor} {text}")
@@ -48,6 +43,15 @@ def parse_chat(file_path: str, user_name: str) -> List[str]:
 
     open(f"./tmp/invalid_lines_{path.basename(file_path)}", 'w').writelines("\n".join(invalid_lines))
     return chat_text
+
+
+def stop_word_checker(actor, invalid_lines, text):
+    skip = False
+    for stop_word in WA_STOP_WORDS:
+        if stop_word in text:
+            invalid_lines.append(f"[STOP_WORD] {actor} - {text}")
+            skip = True
+    return skip
 
 
 def save_text(text_list: List[str], output_path: str):
