@@ -46,12 +46,11 @@ def parse_chat(file_path: str, user_name: str) -> List[str]:
 
 
 def stop_word_checker(actor, invalid_lines, text):
-    skip = False
     for stop_word in WA_STOP_WORDS:
         if stop_word in text:
             invalid_lines.append(f"[STOP_WORD] {actor} - {text}")
-            skip = True
-    return skip
+            return True
+    return False
 
 
 def save_text(text_list: List[str], output_path: str):
