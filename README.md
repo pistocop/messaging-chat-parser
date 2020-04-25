@@ -13,7 +13,7 @@ Data to provide:
     - _.txt_ files exported from one or more chat - [how](https://faq.whatsapp.com/en/android/23756533/)
         - place all txt files in `./data/chat_raw/whatsapp/*.txt`
 - Telegram data
-    - _.json_ with the telegram dump - [how to](https://telegram.org/blog/export-and-more)
+    - _.json_ with the telegram dump - [how](https://telegram.org/blog/export-and-more)
         - copy and rename the json file in `./data/chat_raw/telegram/telegram_dump.json`
 
 ## ⚙ Usage
@@ -48,7 +48,7 @@ Data to provide:
      _12/12/19, 08:40 - `<user_name>`: bla bla bla_ 
 - [2] Check that the telegram dump is named `telegram_dump.json` and is inside <br>
     _./data/chat_raw/telegram/telegram_dump.json_
-- [3] _user_ = the owner of the messages (I hope it coincides with who use those scripts ) 
+- [3] _user_ = the owner of the messages (I hope it coincides with who use those scripts) 
     - the account that had done the data dump for Telegram
     - the value passed in `--user_name` in WhatsApp parser
 - [4] **⚠** Is always better to don't run random scripts on personal information (like chat messages)
