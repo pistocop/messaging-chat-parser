@@ -73,10 +73,6 @@ def run(user_name: str, chats_path: str, output_path: str):
     chat_path = join(output_path, 'wa-chats.txt')
     save_text(wa_text, chat_path)
 
-    wa_text = [line for line in wa_text if line.startswith(USER_TAG)]
-    user_chat_path = join(output_path, f'wa-{user_name}.txt')
-    save_text(wa_text, user_chat_path)
-
 
 def main(argv):
     parser = argparse.ArgumentParser()

@@ -1,39 +1,60 @@
-# Messaging parser
-🎯 Library used to extract messages wrote by myself on Whatsapp and Telegram.
+# 📲 📩 📫 ✏ 🖊 Messaging parser
+================================================================================
+*Use what you had written*
 
-## 📞 Whatsapp chat parser
-Extract users text from whatsapp chats and save it as unique text file.
+## What is this repo?
+This repository provides python scripts to parse WhatsApp and Telegram messages.<br>
+The goal is to obtain text files with a good structure for machine learning purposes. [4]
 
-- **Input (to provide):** 
-    - _.txt_ file exported from one or more chat
-    - Your user name on the chat, e.g. from one line:<br> 
+## 📥 Inputs
+Data to provide:
+- WhatsApp data
+    - _.txt_ files exported from one or more chat - [how](https://faq.whatsapp.com/en/android/23756533/)
+        - place all txt files in `./data/chat_raw/whatsapp/*.txt`
+- Telegram data
+    - _.json_ with the telegram dump - [how to](https://telegram.org/blog/export-and-more)
+        - copy and rename the json file in `./data/chat_raw/telegram/telegram_dump.json`
+
+## ⚙ Usage
+- Install `requirements.txt`
+- WhatsApp [1]
+    > python ./src/whatsapp_parser.py --user_name <user_name>
+- Telegram [2]
+    > python ./src/telegram_parser.py
+- Extract user only messages
+    > python ./src/user_joiner.py
+
+## 📤 Outputs
+- `telegram-chats.txt` and `wa-chats.txt`
+    - Created after scripts running inside _./data/chat_parsed/_ folder
+    - Will have this structure both: <br>
+    _[me] bla bla bla_ <br>
+    _[others] bla bla bla_ <br>
+    _[others] bla bla bla_ <br>
+    _[me] bla bla bla_ <br>
+    - Where the two tags:
+        - `[me]`: placed as suffix of text wrote by the user [3]
+        - `[others]`: placed as suffix of text wrote by others
+- `user-messages.txt`
+    - Created after scripts running inside _./data/chat_parsed/_ folder
+    - One line per message wrote by the user [3]
+
+----
+
+### 📝 Notes
+- [1] How find `<user_name>` value?
+    -  From the WhatsApp chat exported text, e.g. from one line: <br> 
      _12/12/19, 08:40 - `<user_name>`: bla bla bla_ 
-- **Output:**
-    - One txt file with all text of user specified
-    - One txt file with all text of chats, with this form:
-        - _[me] bla bla bla_ for messages wrote by the `<user_name>`
-        - _[other] bla bla bla_ for messages not wrote by the `<user_name>`
-    - Word cloud images (only 4 curiosity)
-- **Usage:**
-    1. Export data from WhatsApp as text file [link](https://faq.whatsapp.com/en/android/23756533/)
-    2. Put all chats exported under `/data/chat_raw/whatsapp/`
-    3. Run the script from main folder <br>
-        `python src/whatsapp_parser.py --user_name XXXX`
-    4. Check the text file under `/data/chat_parsed/`
-        - [optional] Check the lines not processed under `./tmp/`
-    5. [optional] Run `word_cloud.py`
-        - Italian stopwords are used
-    6. Check the images under `/data/word_cloud/` 
-    
-## ✈ Telegram chat parser
-Extract all the messages wrote by the user (and only those).
-
-- **Usage**
-    1. Do the telegram dump - [how to](https://telegram.org/blog/export-and-more)
-    2. Move the `result.json` obtained under `/data/chat_raw/telegram/`
-    3. Run `telegram_parser.py
-    4. Check the result file `/data/chat_parsed/user-telegram.txt`
-    
-## 📝 Todo
-- Save a file with `[me]` and `[others]` placeholder (like WhatsApp parser)
-- Review of this readme 
+- [2] Check that the telegram dump is named `telegram_dump.json` and is inside <br>
+    _./data/chat_raw/telegram/telegram_dump.json_
+- [3] _user_ = the owner of the messages (I hope it coincides with who use those scripts ) 
+    - the account that had done the data dump for Telegram
+    - the value passed in `--user_name` in WhatsApp parser
+- [4] **⚠** Is always better to don't run random scripts on personal information (like chat messages)
+    - You can check the code
+    - Take in mind that before:
+        - This is a free-time project, I'm not guaranteeing efficiently or good programming practice
+        - I'm not so good at writing English 
+        - Good luck
+- WhatsApp parsed isn't tested on groups exported data and is not intended to manage those types of information.
+       
