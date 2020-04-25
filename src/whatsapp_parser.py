@@ -9,8 +9,8 @@ from os import path
 
 from src.utils.utils import get_dir_files
 
-USER_PLACEHOLDER = "[me]"
-OTHERS_PLACEHOLDER = "[others]"
+USER_TAG = "[me]"
+OTHERS_TAG = "[others]"
 
 WA_STOP_WORDS = [word.replace('\n', '') for word in open('./data/resources/WhatsApp_stopwords.txt').readlines()]
 
@@ -37,7 +37,7 @@ def parse_chat(file_path: str, user_name: str) -> List[str]:
                 continue
             if stop_word_checker(actor, invalid_lines, text):
                 continue
-            actor = USER_PLACEHOLDER if actor == user_name else OTHERS_PLACEHOLDER
+            actor = USER_TAG if actor == user_name else OTHERS_TAG
             chat_text.append(f"{actor} {text}")
     print(f'Found {len(invalid_lines)} invalid lines in {file_path}')
 
@@ -70,11 +70,11 @@ def run(user_name: str, chats_path: str, output_path: str):
         file_text_parsed = parse_chat(file_path, user_name)
         wa_text.extend(file_text_parsed)
 
-    chat_path = join(output_path, f'chats.txt')
+    chat_path = join(output_path, 'wa-chats.txt')
     save_text(wa_text, chat_path)
 
-    wa_text = [line for line in wa_text if line.startswith(USER_PLACEHOLDER)]
-    user_chat_path = join(output_path, f'{user_name}.txt')
+    wa_text = [line for line in wa_text if line.startswith(USER_TAG)]
+    user_chat_path = join(output_path, f'wa-{user_name}.txt')
     save_text(wa_text, user_chat_path)
 
 
