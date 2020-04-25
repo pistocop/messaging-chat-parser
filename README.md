@@ -52,7 +52,7 @@ Data to provide:
     - the account that had done the data dump for Telegram
     - the value passed in `--user_name` in WhatsApp parser
 - [4] **⚠** Is always better to don't run random scripts on personal information (like chat messages)
-    - You can check the code
+    - You can check this code
     - Take in mind that before:
         - This is a free-time project, I'm not guaranteeing efficiently or good programming practice
         - I'm not so good at writing English 
