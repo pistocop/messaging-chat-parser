@@ -57,5 +57,4 @@ Data to provide:
         - This is a free-time project, I'm not guaranteeing efficiently or good programming practice
         - I'm not so good at writing English 
         - Good luck
-- WhatsApp parser isn't tested on groups exported data and is not intended to manage those types of information.
-       
+- Both Telegram and WhatsApp parsers isn't tested on groups chats data and is not intended to manage those types of information.       

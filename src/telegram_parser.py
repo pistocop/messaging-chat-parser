@@ -35,6 +35,8 @@ def messages_parser(personal_chat, telegram_data):
     for chat in tqdm(telegram_data['chats']['list']):
         if chat['type'] == 'saved_messages' and not personal_chat:
             continue  # Skip personal messages
+        if chat['type'] != 'personal_chat':
+            continue  # Skip everything but 1 to 1 messages
         print(f"Processing chat with `{chat.get('name', 'personal messages')}`")
         for message in chat['messages']:
             if message['type'] == "message" and message['text']:
