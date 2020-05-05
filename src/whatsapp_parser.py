@@ -3,26 +3,17 @@ import logging
 import argparse
 import parse
 
-from enum import Enum
 from pathlib import Path
 from datetime import datetime
 from typing import List, Tuple, Optional
 from os.path import join, basename, normpath
 
-from src.utils.utils import get_dir_files
+from src.utils.utils import get_dir_files, TimeFormat, split_in_sessions
 
 USER_TAG = "[me]"
 OTHERS_TAG = "[others]"
 
 WA_STOP_WORDS = [word.replace('\n', '') for word in open('./data/resources/WhatsApp_stopwords.txt').readlines()]
-
-
-class TimeFormat(Enum):
-    world = 'world'
-    usa = 'usa'
-
-    def __str__(self):
-        return self.value
 
 
 def parse_line(line: str, datetime_format: str) -> Tuple[Optional[datetime], str, str]:
@@ -37,13 +28,6 @@ def parse_line(line: str, datetime_format: str) -> Tuple[Optional[datetime], str
         actor = line_elements['actor']
         text = line_elements['text']
     return timestamp, actor, text
-
-
-def split_in_sessions(t_current, t_last, chat_text, delta_h_threshold, session_token):
-    if t_last and t_current:
-        delta_h = divmod((t_current - t_last).total_seconds(), 3600)[0]
-        if delta_h >= delta_h_threshold:
-            chat_text.append(session_token)
 
 
 def stop_word_checker(actor, invalid_lines, text):
@@ -117,10 +101,10 @@ def main(argv):
     parser = argparse.ArgumentParser(prog=argv[0])
     parser.add_argument('--user_name', type=str, required=True,
                         help="The whatsapp user name of User. It could be read on the WhatsApp raws data.")
-    parser.add_argument('--chats_path', type=str, required=False, default="./data/chat_raw/whatsapp/")
-    parser.add_argument('--output_path', type=str, required=False, default="./data/chat_parsed/")
-    parser.add_argument('--session_token', type=str, required=False, default="<|endoftext|>",
-                        help="If provided, add a 'session_token' after 'delta_h_threshold' hours"
+    parser.add_argument('--chats_path', type=str, default="./data/chat_raw/whatsapp/")
+    parser.add_argument('--output_path', type=str, default="./data/chat_parsed/")
+    parser.add_argument('--session_token', type=str, default="<|endoftext|>",
+                        help="Add a 'session_token' after 'delta_h_threshold' hours"
                              "are elapsed between two messages. This allows splitting in sessions"
                              "one chat based on messages timing.")
     parser.add_argument("--delta_h_threshold", type=int, default=4,
