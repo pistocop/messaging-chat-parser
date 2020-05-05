@@ -32,10 +32,13 @@ Data to provide:
     _[me] bla bla bla_ <br>
     _[others] bla bla bla_ <br>
     _[others] bla bla bla_ <br>
+     <|endoftext|> <br>
     _[me] bla bla bla_ <br>
-    - Where the two tags:
+     ...
+    - Where the three tags:
         - `[me]`: placed as suffix of text wrote by the user [3]
         - `[others]`: placed as suffix of text wrote by others
+        - `<|endoftext|>`: added when the time elapsed between two sequential messages is > 4 hours
 - `user-messages.txt`
     - Created after scripts running inside _./data/chat_parsed/_ folder
     - One line per message wrote by the user [3]
@@ -58,3 +61,4 @@ Data to provide:
         - I'm not so good at writing English 
         - Good luck
 - Both Telegram and WhatsApp parsers isn't tested on groups chats data and is not intended to manage those types of information.       
+- Is possible change the behaviour of `<|endoftext|>` token (and remove it) with scripts arguments

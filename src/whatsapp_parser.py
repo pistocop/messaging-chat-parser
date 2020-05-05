@@ -119,7 +119,7 @@ def main(argv):
                         help="The whatsapp user name of User. It could be read on the WhatsApp raws data.")
     parser.add_argument('--chats_path', type=str, required=False, default="./data/chat_raw/whatsapp/")
     parser.add_argument('--output_path', type=str, required=False, default="./data/chat_parsed/")
-    parser.add_argument('--session_token', type=str, required=False, default=None,
+    parser.add_argument('--session_token', type=str, required=False, default="<|endoftext|>",
                         help="If provided, add a 'session_token' after 'delta_h_threshold' hours"
                              "are elapsed between two messages. This allows splitting in sessions"
                              "one chat based on messages timing.")
