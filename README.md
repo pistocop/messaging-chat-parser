@@ -22,12 +22,11 @@ Data to provide:
     > python ./src/whatsapp_parser.py --user_name <user_name>
 - Telegram [2]
     > python ./src/telegram_parser.py
-- Extract user only messages
-    > python ./src/user_joiner.py
+- Join files and extract user messages
+    > python ./src/joiner.py
 
 ## 📤 Outputs
 - `telegram-chats.txt` and `wa-chats.txt`
-    - Created after scripts running inside _./data/chat_parsed/_ folder
     - Will have this structure both: <br>
     _[me] bla bla bla_ <br>
     _[others] bla bla bla_ <br>
@@ -39,9 +38,11 @@ Data to provide:
         - `[me]`: placed as suffix of text wrote by the user [3]
         - `[others]`: placed as suffix of text wrote by others
         - `<|endoftext|>`: added when the time elapsed between two sequential messages is > 4 hours
+- `all-messages.txt`
+    - One file with both `telegram-chats.txt` and `wa-chats.txt` rows.
 - `user-messages.txt`
-    - Created after scripts running inside _./data/chat_parsed/_ folder
     - One line per message wrote by the user [3]
+
 
 ----
 
