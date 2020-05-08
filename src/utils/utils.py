@@ -47,7 +47,8 @@ class TimeFormat(Enum):
 
 
 def split_in_sessions(t_current, t_last, chat_text, delta_h_threshold, session_token):
-    if t_last and t_current:
-        delta_h = divmod((t_current - t_last).total_seconds(), 3600)[0]
-        if delta_h >= delta_h_threshold:
-            chat_text.append(session_token)
+    if session_token:
+        if t_last and t_current:
+            delta_h = divmod((t_current - t_last).total_seconds(), 3600)[0]
+            if delta_h >= delta_h_threshold:
+                chat_text.append(session_token)

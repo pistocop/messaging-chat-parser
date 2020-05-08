@@ -19,9 +19,9 @@ Data to provide:
 ## ⚙ Usage
 - Install `requirements.txt`
 - WhatsApp [1]
-    > python ./src/whatsapp_parser.py --user_name <user_name>
+    > python ./src/whatsapp_parser.py --session_token <|endoftext|> --user_name **<user_name>**
 - Telegram [2]
-    > python ./src/telegram_parser.py
+    > python ./src/telegram_parser.py --session_token <|endoftext|>
 - Join files and extract user messages
     > python ./src/joiner.py
 
@@ -61,5 +61,9 @@ Data to provide:
         - This is a free-time project, I'm not guaranteeing efficiently or good programming practice
         - I'm not so good at writing English 
         - Good luck
-- Both Telegram and WhatsApp parsers isn't tested on groups chats data and is not intended to manage those types of information.       
-- Is possible change the behaviour of `<|endoftext|>` token (and remove it) with scripts arguments
+- Both Telegram and WhatsApp parsers aren't tested on the group's chats data and is not intended to manage those types of information.       
+- Is possible to change the chat session behavior 
+    - with `--session_token` we can change the session splitting token, if argument not provided session split will be
+    disabled. 
+    - with `--delta_h_threshold` is possible to change the time windows to be elapsed
+    between two sequential messages before inserting a `session_token`
