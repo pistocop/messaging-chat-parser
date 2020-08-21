@@ -8,6 +8,7 @@ from os.path import normpath, basename
 
 from tqdm import tqdm
 
+sys.path.append("./")
 from src.utils.utils import extract_dict_structure, TimeFormat, split_in_sessions
 
 USER_TAG = "[me]"

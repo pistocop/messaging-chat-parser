@@ -8,6 +8,7 @@ from datetime import datetime
 from typing import List, Tuple, Optional
 from os.path import join, basename, normpath
 
+sys.path.append("./")
 from src.utils.utils import get_dir_files, TimeFormat, split_in_sessions
 
 USER_TAG = "[me]"
