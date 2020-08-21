@@ -66,7 +66,7 @@ def load_data(json_path):
     with open(json_path, 'r') as f:
         telegram_data = json.load(f)
     telegram_data_structure = extract_dict_structure(telegram_data)
-    logging.info(f'Input json structure:\n{json.dumps(telegram_data_structure, indent=4, sort_keys=True)}')
+    # logging.info(f'Input json structure:\n{json.dumps(telegram_data_structure, indent=4, sort_keys=True)}')
     return telegram_data
 
 
