@@ -19,9 +19,9 @@ Data to provide:
 ## ⚙ Usage
 - Install `requirements.txt`
 - WhatsApp [1]
-    > python ./src/whatsapp_parser.py --session_token <|endoftext|> --user_name **<user_name>**
+    > python ./src/whatsapp_parser.py --session_token "<|endoftext|>" --user_name **<user_name>**
 - Telegram [2]
-    > python ./src/telegram_parser.py --session_token <|endoftext|>
+    > python ./src/telegram_parser.py --session_token "<|endoftext|>"
 - Join files and extract user messages
     > python ./src/joiner.py
 
