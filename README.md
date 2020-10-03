@@ -71,6 +71,6 @@ Data to provide:
     - Both WhatsApp and Telegram parser use a default Italian datetime format parser
     - You can always use a custom format parser by using the `--time_format` parameter:
         - WhatApp:<br>
-        > python ./src/whatsapp_parser.py --session_token "<|endoftext|>" --delta_h_threshold 4 --user_name **<user_name>** --time_format "%Y-%m-%dT%H:%M:%S"
+        > python ./src/whatsapp_parser.py --session_token "<|endoftext|>" --delta_h_threshold 4 --user_name **<user_name>** --time_format "%d/%m/%y, %H:%M"
         - Telegram:<br>
         > python ./src/telegram_parser.py --session_token "<|endoftext|>" --time_format "%Y-%m-%dT%H:%M:%S"
