@@ -9,7 +9,7 @@ from os.path import normpath, basename
 from tqdm import tqdm
 
 sys.path.append("./")
-from src.utils.utils import extract_dict_structure, TimeFormat, split_in_sessions
+from src.utils.utils import extract_dict_structure, split_in_sessions
 
 USER_TAG = "[me]"
 OTHERS_TAG = "[others]"
@@ -34,7 +34,7 @@ def stop_word_checker(actor, invalid_lines, text):
 
 
 def messages_parser(personal_chat, telegram_data, session_info: dict):
-    datetime_format = "%Y-%m-%dT%H:%M:%S" if session_info['time_format'] == TimeFormat.world else "%Y-%d-%mT%H:%M:%S"
+    datetime_format = session_info['time_format']
     usr_id = telegram_data['personal_information']['user_id']
     usr_messages = []
     invalid_lines = []
@@ -74,7 +74,7 @@ def run(json_path: str,
         output_path: str,
         session_token: str,
         delta_h_threshold: int,
-        time_format: TimeFormat,
+        time_format: str,
         personal_chat: bool = None):
     session_info = {"session_token": session_token,
                     "delta_h_threshold": delta_h_threshold,
@@ -103,8 +103,8 @@ def main(argv):
                              "one chat based on messages timing.")
     parser.add_argument("--delta_h_threshold", type=int, default=4,
                         help="Hours between two messages to before add 'session_token'")
-    parser.add_argument("--time_format", type=TimeFormat, choices=list(TimeFormat), default=TimeFormat.world,
-                        help="The WhatsApp datetime format, two choice: world and usa.")
+    parser.add_argument("--time_format", type=str, default="%Y-%m-%dT%H:%M:%S",
+                        help="The Telegram format timestamp. Default is Italian format.")
     parser.add_argument("-v", "--verbose", help="increase output verbosity", action="store_true")
     args = parser.parse_args(argv[1:])
     loglevel = logging.DEBUG if args.verbose else logging.INFO

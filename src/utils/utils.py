@@ -1,5 +1,4 @@
 import json
-from enum import Enum
 from os import listdir, path
 from typing import Tuple, List
 from argparse import Namespace
@@ -36,14 +35,6 @@ def extract_dict_structure(dictionary: dict) -> dict:
                 sub_structure = extract_dict_structure(first_el)
                 structure[f"[{key}]"] = sub_structure
     return structure
-
-
-class TimeFormat(Enum):
-    world = 'world'
-    usa = 'usa'
-
-    def __str__(self):
-        return self.value
 
 
 def split_in_sessions(t_current, t_last, chat_text, delta_h_threshold, session_token):

@@ -9,7 +9,7 @@ from typing import List, Tuple, Optional
 from os.path import join, basename, normpath
 
 sys.path.append("./")
-from src.utils.utils import get_dir_files, TimeFormat, split_in_sessions
+from src.utils.utils import get_dir_files, split_in_sessions
 
 USER_TAG = "[me]"
 OTHERS_TAG = "[others]"
@@ -79,11 +79,9 @@ def parse_chat(file_path: str,
 def run(user_name: str,
         chats_path: str,
         output_path: str,
-        time_format: TimeFormat,
+        time_format: str,
         delta_h_threshold: int,
         session_token: str = None):
-    datetime_format = "%d/%m/%y, %H:%M" if time_format == TimeFormat.world else "%m/%d/%y, %H:%M"
-
     logging.info(f"WA_STOP_WORDS:{WA_STOP_WORDS}")
     Path("./tmp").mkdir(parents=True, exist_ok=True)
     txt_files_name, txt_files_paths = get_dir_files(dir_path=chats_path, extension_filter=".txt")
@@ -91,7 +89,7 @@ def run(user_name: str,
 
     wa_text = []
     for file_name, file_path in zip(txt_files_name, txt_files_paths):
-        file_text_parsed = parse_chat(file_path, user_name, datetime_format, delta_h_threshold, session_token)
+        file_text_parsed = parse_chat(file_path, user_name, time_format, delta_h_threshold, session_token)
         wa_text.extend(file_text_parsed)
 
     chat_path = join(output_path, 'wa-chats.txt')
@@ -110,8 +108,8 @@ def main(argv):
                              "one chat based on messages timing.")
     parser.add_argument("--delta_h_threshold", type=int, default=4,
                         help="Hours between two messages to before add 'session_token'")
-    parser.add_argument("--time_format", type=TimeFormat, choices=list(TimeFormat), default=TimeFormat.world,
-                        help="The WhatsApp datetime format, two choice: world and usa.")
+    parser.add_argument("--time_format", type=str, default="%d/%m/%y, %H:%M",
+                        help="The WhatsApp datetime format. The default is the italian format.")
     parser.add_argument("-v", "--verbose", help="increase output verbosity", action="store_true")
     args = parser.parse_args(argv[1:])
     loglevel = logging.DEBUG if args.verbose else logging.INFO
