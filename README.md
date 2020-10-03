@@ -68,7 +68,7 @@ Data to provide:
     - with `--delta_h_threshold` is possible to change the time windows to be elapsed
     between two sequential messages before inserting a `session_token`
 - 📅 Parsing data with custom values:
-    - Both WhatsApp and Telegram parser use a default Italian datetime format parser
+    - Both WhatsApp and Telegram parser use a default Italian datetime format
     - You can always use a custom format parser by using the `--time_format` parameter:
         - WhatApp:<br>
         > python ./src/whatsapp_parser.py --session_token "<|endoftext|>" --delta_h_threshold 4 --user_name **<user_name>** --time_format "%d/%m/%y, %H:%M"
