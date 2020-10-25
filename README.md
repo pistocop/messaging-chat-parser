@@ -21,7 +21,7 @@ Data to provide:
 - WhatsApp [1]
     > python ./src/whatsapp_parser.py --session_token "<|endoftext|>" --delta_h_threshold 4 --user_name **<user_name>** 
 - Telegram [2]
-    > python ./src/telegram_parser.py --session_token "<|endoftext|> --delta_h_threshold 4"
+    > python ./src/telegram_parser.py --session_token "<|endoftext|>" --delta_h_threshold 4
 - Join files and extract user messages
     > python ./src/joiner.py
 
