@@ -7,7 +7,7 @@ and join all together in one `user-messages.txt` file.
 import sys
 import logging
 import argparse
-from os.path import basename, normpath, join
+from os.path import basename, normpath, join, isfile
 
 from typing import List
 
@@ -24,6 +24,9 @@ def run(files_directory: str, files_name: List[str], output_path: str):
     all_messages = []
     for file_name in files_name:
         file_path = join(files_directory, file_name)
+        if not isfile(file_path):
+            logging.warning(f"File {file_path} provided but not found")
+            continue
         file = open(file_path, 'r')
         for line in file:
             all_messages.append(line)
