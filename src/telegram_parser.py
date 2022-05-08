@@ -35,7 +35,7 @@ def stop_word_checker(actor, invalid_lines, text):
 
 def messages_parser(personal_chat, telegram_data, session_info: dict):
     datetime_format = session_info['time_format']
-    usr_id = telegram_data['personal_information']['user_id']
+    usr_id = 'user' + str(telegram_data['personal_information']['user_id'])
     usr_messages = []
     invalid_lines = []
 
