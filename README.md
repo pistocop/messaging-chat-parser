@@ -61,6 +61,7 @@ Data to provide:
         - This is a free-time project, I'm not guaranteeing efficiently or good programming practice
         - I'm not so good at writing English 
         - Good luck
+- [5] Be sure to select the "Account information" checkbox into the telegram dump dialog window
 - Both Telegram and WhatsApp parsers aren't tested on the group's chats data and is not intended to manage those types of information.       
 - Is possible to change the chat session behavior 
     - with `--session_token` we can change the session splitting token, if argument not provided session split will be
