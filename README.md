@@ -13,7 +13,7 @@ Data to provide:
     - _.txt_ files exported from one or more chat - [how](https://faq.whatsapp.com/en/android/23756533/)
         - place all txt files in `./data/chat_raw/whatsapp/*.txt`
 - Telegram data
-    - _.json_ with the telegram dump - [how](https://telegram.org/blog/export-and-more)
+    - _.json_ with the telegram dump - [how](https://telegram.org/blog/export-and-more) [5]
         - copy and rename the json file in `./data/chat_raw/telegram/telegram_dump.json`
 
 ## ⚙ Usage
